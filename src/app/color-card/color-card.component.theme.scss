@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+
+@mixin color-card-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .color-card {
+    outline-color: mat-color($primary, default);
+
+    @include mat-elevation(4);
+
+    &:hover, &:focus {
+      @include mat-elevation(16);
+    }
+
+    .color-swatch {
+      outline-color: mat-color($primary, default);
+    }
+  }
+}

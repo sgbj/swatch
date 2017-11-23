@@ -1,0 +1,35 @@
+<mat-sidenav-container>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="title"><mat-icon aria-hidden>palette</mat-icon> {{title}}</span>
+      <span class="fill-remaining-space"></span>
+      <button mat-icon-button [matMenuTriggerFor]="themeMenu" matTooltip="Select a theme!">
+          <mat-icon>format_color_fill</mat-icon>
+      </button>
+      <mat-menu #themeMenu="matMenu">
+        <div style="max-width: 128px;">
+          <button *ngFor="let theme of themes" mat-menu-item (click)="installTheme(theme)" 
+            [attr.aria-label]="theme.name" class="theme-swatch" [style.backgroundColor]="theme.primary"
+            [style.borderColor]="theme.accent">
+          </button>
+        </div>
+      </mat-menu>
+      <a mat-button>
+        <img src="assets/img/github-circle-white-transparent.svg" alt="GitHub">
+        GitHub
+      </a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-tab-group color="accent">
+    <mat-tab label="Getting started">
+      <app-getting-started></app-getting-started>
+    </mat-tab>
+    <mat-tab label="Theme">
+      <app-theme [theme]="theme"></app-theme>
+    </mat-tab>
+    <mat-tab label="Palette">
+      <app-palette></app-palette>
+    </mat-tab>
+  </mat-tab-group>
+</mat-sidenav-container>

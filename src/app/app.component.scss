@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.theme-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 4px 0 4px 16px;
+  border: 2px solid;
+
+  &:last-of-type {
+    margin-right: 16px;
+  }
+}
+
+mat-sidenav-container {
+  height: 100%;
+}

@@ -1,0 +1,36 @@
+.color-card {
+  border-radius: 2px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 32px;
+  float: left;
+  margin-right: 32px;
+  transition: box-shadow .2s;
+
+  h3 {
+    text-transform: capitalize;
+    padding: 16px;
+  }
+
+  .color-swatch {
+    padding: 16px;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    z-index: 1;
+
+    .hex {
+      float: right;
+      text-transform: uppercase;
+    }
+
+    .name {
+      float: left;
+    }
+
+    .clearfix {
+      display: block;
+      clear: both;
+    }
+  }
+}

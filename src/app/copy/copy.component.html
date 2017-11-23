@@ -1,0 +1,7 @@
+<div hidden #content (cdkObserveContent)="onContentChanged()"><ng-content></ng-content></div>
+<mat-form-field>
+  <input matInput placeholder="Copy to clipboard" #input tabindex="-1" />
+  <button mat-button matSuffix mat-icon-button aria-label="Copy" matTooltip="Copy" tabindex="-1" (click)="onCopy()">
+    <mat-icon>content_copy</mat-icon>
+  </button>
+</mat-form-field>

@@ -1,0 +1,19 @@
+<div class="color-card" tabindex="0" [style.backgroundColor]="hasKey('500') ? color?.palette['500'] : 'inherit'">
+  <div [style.color]="hasKey('500') ? color?.contrast['500'] : 'inherit'">
+    <h3>{{color?.name}}</h3>
+  </div>
+  <div *ngIf="hasKey('500')">
+    <a class="color-swatch" mat-ripple tabindex="0" [style.backgroundColor]="color?.palette['500']" (click)="openDialog('500')">
+      <span class="pull-left" [style.color]="color?.contrast['500']">500</span>
+      <span class="pull-right" [style.color]="color?.contrast['500']">{{color?.palette['500']}}</span>
+      <span class="clearfix"></span>
+    </a>
+  </div>
+  <div *ngFor="let key of keys" [style.backgroundColor]="color?.palette[key]">
+      <a class="color-swatch" mat-ripple tabindex="0" (click)="openDialog(key)">
+        <span class="pull-left" [style.color]="color?.contrast[key]">{{key}}</span>
+        <span class="pull-right" [style.color]="color?.contrast[key]">{{color?.palette[key]}}</span>
+        <span class="clearfix"></span>
+      </a>
+  </div>
+</div>

@@ -1,0 +1,240 @@
+<h2>Getting started</h2>
+
+<ol>
+  <li><a href="#theming">Theming</a></li>
+  <li><a href="#elevation">Elevation</a></li>
+  <li><a href="#typography">Typography</a></li>
+</ol>
+
+<h2 id="theming">Theming</h2>
+
+<p>Angular Material allows you to create your own theme that can be used to customize the appearance of existing Material components as well as your own. 
+  Angular Material has guides on <a href="https://github.com/angular/material2/blob/master/guides/theming.md">theming</a> and <a href="https://github.com/angular/material2/blob/master/guides/theming-your-components.md">theming your components</a>.</p>
+
+<h3>Theming your components</h3>
+
+<p>You can use mixins to apply the same Material styles to your own components.</p>
+
+<p>You can get started by creating a theme file for your component. Only the styles that are affected by the theme should be placed in your theme file. Other styles should be placed in your normal component style file.</p>
+
+<p>Add the following snippet of code to your <code>src/app/awesome-header/awesome-header.component.theme.scss</code> file.</p>
+
+<app-prism language="scss">
+// Import all the tools needed to customize the theme and extract parts of it
+@import '~@angular/material/theming';
+
+// Define a mixin that accepts a theme and outputs the color styles for the component.
+@mixin awesome-header-theme($theme) {{'{'}}
+  // Extract whichever individual palettes you need from the theme.
+  $is-dark: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  // Use mat-color to extract individual colors from a palette as necessary.
+  .awesome-header {{'{'}}
+    background-color: mat-color($primary, 500);
+    border-color: mat-color($accent, A400, 0.8);
+  {{'}'}}
+{{'}'}}
+</app-prism>
+
+<h3>Theming your application</h3>
+
+<p>Create a <code>src/app-theme.scss</code> file to bring all of your custom component themes together.</p>
+
+<app-prism language="scss">
+// Import all the tools needed to customize the theme and extract parts of it
+@import '~@angular/material/theming';
+
+// Import your custom component themes.
+@import 'app/awesome-header/awesome-header.component.theme';
+@import 'app/awesome-footer/awesome-footer.component.theme';
+
+// Define a mixin that accepts a theme and outputs the color styles for the component.
+@mixin app-theme($theme) {{'{'}}
+  $is-dark: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  $typography-config: mat-typography-config();
+
+  // Add other general styles.
+
+  @include awesome-header-theme($theme);
+  @include awesome-footer-theme($theme);
+{{'}'}}
+</app-prism>
+
+<p>Then add the following snippet of code to your <code>src/styles.scss</code> file.</p>
+
+<app-prism language="scss">
+@import '~@angular/material/theming';
+@import 'app-theme';
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define a theme.
+$primary: mat-palette($mat-indigo);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
+@include app-theme($theme);
+</app-prism>
+
+<h3>Prebuilt themes</h3>
+
+<p>Angular Material has several prebuilt themes to choose from. The snippets below contain the default configurations for those themes</p>
+
+<div class="code-accordion" style="max-width: 600px;">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          deeppurple-amber
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-prism language="scss">
+$primary: mat-palette($mat-deep-purple);
+$accent:  mat-palette($mat-amber, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+      </app-prism>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          indigo-pink
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-prism language="scss">
+$primary: mat-palette($mat-indigo);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+      </app-prism>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          pink-bluegrey
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-prism language="scss">
+$primary: mat-palette($mat-pink, 700, 500, 900);
+$accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+
+$theme: mat-dark-theme($primary, $accent);
+      </app-prism>
+    </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            purple-green
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-prism language="scss">
+$primary: mat-palette($mat-purple, 700, 500, 800);
+$accent:  mat-palette($mat-green, A200, A100, A400);
+
+$theme: mat-dark-theme($primary, $accent);
+      </app-prism>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<h2 id="elevation">Elevation</h2>
+
+<p>Angular Material provides classes and mixins for adding elevation to your elements. <a href="https://github.com/angular/material2/blob/master/guides/elevation.md">Learn more</a></p>
+
+<div>
+  <mat-slider thumbLabel tickInterval="1" min="0" max="24" step="1" style="width: 100%; max-width: 300px;" [(ngModel)]="elevation"></mat-slider>
+</div>
+
+<div class="example-div mat-elevation-z{{elevation}}" style="max-width: 600px;">
+  <app-copy>mat-elevation-z{{elevation}}</app-copy>
+
+  <h4>Predefined classes</h4>
+  <p>Material provides predefined classes with different elevations ranging from 0-24.</p>
+  <app-prism language="markup">
+    &lt;div class="mat-elevation-z{{elevation}}"&gt;&lt;/div&gt;
+  </app-prism>
+
+  <h4>Custom CSS</h4>
+  <p>Material also has a mixin that allows you to add elevation to your own classes.</p>
+  <app-prism language="scss">
+@import '~@angular/material/theming';
+
+.my-class {{'{'}}
+  @include mat-elevation({{elevation}});
+{{'}'}}
+  </app-prism>
+</div>
+
+<div class="clearfix"></div>
+
+<h2 id="typography">Typography</h2>
+
+<p>Angular Material provides mixins and classes for applying standard typography to your elements. <a href="https://github.com/angular/material2/blob/master/guides/typography.md">Learn more</a></p>
+
+<div>
+  <mat-form-field style="width: 100%; max-width: 300px; margin-top: 16px;">
+    <mat-select placeholder="Typography level" [(ngModel)]="type">
+      <mat-option *ngFor="let type of typography" [value]="type">
+        {{type}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="example-div mat-elevation-z16" style="max-width: 800px;">
+  <app-copy>mat-{{type}}</app-copy>
+
+  <div>
+    <div class="mark pull-left">
+      <div class="mat-{{type}}">{{type}}</div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  
+  <h4>Predefined classes</h4>
+  <p>Angular Material offers predefined classes that allows you to use specific typography levels in your markup.</p>
+  <app-prism language="markup">
+    &lt;div class="mat-{{type}}"&gt;&lt;/div&gt;
+  </app-prism>
+
+  <h4>Custom CSS</h4>
+  <p>Angular Material has mixins and functions that you can use in your own classes.</p>
+  <app-prism language="scss">
+@import '~@angular/material/theming';
+
+// Create a config with the default typography levels.
+$config: mat-typography-config();
+
+// Custom class that uses specific styles from the `{{type}}` level.
+.my-class {{'{'}}
+  font-family: mat-font-family($config);
+  font-size: mat-font-size($config, {{type}});
+  font-weight: mat-font-weight($config, {{type}});
+  line-height: mat-line-height($config, {{type}});
+{{'}'}}
+
+// Custom class that uses all of the typography styles from the `{{type}}` level.
+.my-class-2 {{'{'}}
+  @include mat-typography-level-to-styles($config, {{type}});
+{{'}'}}
+  </app-prism>
+</div>
+
+<div class="clearfix"></div>

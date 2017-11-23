@@ -1,0 +1,46 @@
+@import '~@angular/material/theming';
+
+@import 'general';
+
+@import '../app/app.component.theme';
+@import '../app/getting-started/getting-started.component.theme';
+@import '../app/prism/prism.component.theme';
+@import '../app/color-card/color-card.component.theme';
+
+@mixin app-theme($theme) {
+  $is-dark: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  a:not(.mat-button) {
+    color: if($is-dark, mat-color($accent), mat-color($primary));
+  }
+
+  $typography-config: mat-typography-config(
+    $font-family:   'Roboto, "Helvetica Neue", sans-serif',
+    $display-4:     mat-typography-level(112px, 112px, 300),
+    $display-3:     mat-typography-level(56px, 56px, 400),
+    $display-2:     mat-typography-level(45px, 48px, 400),
+    $display-1:     mat-typography-level(34px, 36px, 400),
+    $headline:      mat-typography-level(32px, 36px, 400),
+    $title:         mat-typography-level(24px, 36px, 500),
+    $subheading-2:  mat-typography-level(20px, 32px, 400),
+    $subheading-1:  mat-typography-level(19px, 28px, 400),
+    $body-2:        mat-typography-level(16px, 26px, 500),
+    $body-1:        mat-typography-level(16px, 22px, 400),
+    $caption:       mat-typography-level(12px, 20px, 400),
+    $button:        mat-typography-level(14px, 14px, 500),
+    // Line-height must be unit-less fraction of the font-size.
+    $input:         mat-typography-level(18px, 1.125, 400)
+  );
+
+  @include angular-material-typography($typography-config);
+
+  @include app-component-theme($theme);
+  @include getting-started-component-theme($theme);
+  @include prism-component-theme($theme);
+  @include color-card-component-theme($theme);
+}

@@ -1,0 +1,22 @@
+@import '~@angular/material/theming';
+
+@mixin app-component-theme($theme) {
+  $is-dark: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .mat-tab-header {
+    background: mat-color($primary);
+  }
+
+  .mat-tab-label {
+    color: mat-color($primary, default-contrast);
+  }
+
+  .mat-tab-group.mat-accent .mat-tab-label:focus {
+    background-color: if($is-dark, mat-color($primary, lighter, 0.6), mat-color($primary, darker, 0.6));
+  }
+}

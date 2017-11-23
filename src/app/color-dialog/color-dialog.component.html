@@ -1,0 +1,13 @@
+<h3>{{data.name}}</h3>
+
+<div class="color-code">
+  <span class="color-sample" [style.borderColor]="data.contrast" [style.backgroundColor]="data.color" [matTooltip]="data.color">&nbsp;</span>
+  <app-copy>{{data.colorCode}}</app-copy>
+</div>
+
+<div class="color-code" *ngIf="!data.hideContrastCode">
+  <span class="color-sample" [style.borderColor]="data.color" [style.backgroundColor]="data.contrast" [matTooltip]="data.contrast">&nbsp;</span>
+  <app-copy>{{data.contrastCode}}</app-copy>
+</div>
+
+<button mat-button class="pull-right" (click)="onClose()">Close</button>

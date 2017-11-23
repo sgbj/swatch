@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@mixin prism-component-theme($theme) {
+  $is-dark: map-get($theme, is-dark);
+  $background: map-get($theme, background);
+
+  :not(pre) > code[class*="language-"], pre[class*="language-"] {
+    $bg: mat-color($background, background);
+    background: if($is-dark, lighten($bg, 2%), darken($bg, 2%));
+  }
+}

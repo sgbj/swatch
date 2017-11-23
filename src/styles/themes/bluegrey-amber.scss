@@ -1,0 +1,12 @@
+@import '../app-theme';
+@import '~prismjs/themes/prism-solarizedlight';
+
+// Define a theme.
+$primary: mat-palette($mat-blue-grey);
+$accent:  mat-palette($mat-amber);
+
+$theme: mat-light-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
+@include app-theme($theme);

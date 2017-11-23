@@ -1,0 +1,12 @@
+@import '../app-theme';
+@import '~prismjs/themes/prism';
+
+// Define a theme.
+$primary: mat-palette($mat-deep-purple);
+$accent:  mat-palette($mat-amber, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
+@include app-theme($theme);
