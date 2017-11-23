@@ -8,12 +8,12 @@
 
 <h2 id="theming">Theming</h2>
 
-<p>Angular Material allows you to create your own theme that can be used to customize the appearance of existing Material components as well as your own. 
+<p>Angular Material allows you to create your own theme that can be used to customize the appearance of existing components as well as your own. 
   Angular Material has guides on <a href="https://github.com/angular/material2/blob/master/guides/theming.md">theming</a> and <a href="https://github.com/angular/material2/blob/master/guides/theming-your-components.md">theming your components</a>.</p>
 
 <h3>Theming your components</h3>
 
-<p>You can use mixins to apply the same Material styles to your own components.</p>
+<p>You can use mixins to apply the same styles to your own components.</p>
 
 <p>You can get started by creating a theme file for your component. Only the styles that are affected by the theme should be placed in your theme file. Other styles should be placed in your normal component style file.</p>
 
@@ -53,7 +53,7 @@
 @import 'app/awesome-header/awesome-header.component.theme';
 @import 'app/awesome-footer/awesome-footer.component.theme';
 
-// Define a mixin that accepts a theme and outputs the color styles for the component.
+// Define a mixin that accepts a theme and outputs the color styles for all your components.
 @mixin app-theme($theme) {{'{'}}
   $is-dark: map-get($theme, is-dark);
   $primary: map-get($theme, primary);
@@ -85,7 +85,7 @@ $accent:  mat-palette($mat-pink, A200, A100, A400);
 
 $theme: mat-light-theme($primary, $accent);
 
-// Include all theme styles for the components.
+// Include all theme styles for your components.
 @include angular-material-theme($theme);
 @include app-theme($theme);
 </app-prism>
