@@ -61,10 +61,30 @@
   $warn: map-get($theme, warn);
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
-  $typography-config: mat-typography-config();
+
+  // Configure the typography for your theme (optional).
+  $typography-config: mat-typography-config(
+    $font-family:   'Roboto, "Helvetica Neue", sans-serif',
+    $display-4:     mat-typography-level(112px, 112px, 300),
+    $display-3:     mat-typography-level(56px, 56px, 400),
+    $display-2:     mat-typography-level(45px, 48px, 400),
+    $display-1:     mat-typography-level(34px, 40px, 400),
+    $headline:      mat-typography-level(24px, 32px, 400),
+    $title:         mat-typography-level(20px, 32px, 500),
+    $subheading-2:  mat-typography-level(16px, 28px, 400),
+    $subheading-1:  mat-typography-level(15px, 24px, 400),
+    $body-2:        mat-typography-level(14px, 24px, 500),
+    $body-1:        mat-typography-level(14px, 20px, 400),
+    $caption:       mat-typography-level(12px, 20px, 400),
+    $button:        mat-typography-level(14px, 14px, 500),
+    // Line-height must be unit-less fraction of the font-size.
+    $input:         mat-typography-level(16px, 1.125, 400)
+  );
+  @include angular-material-typography($typography-config);
 
   // Add other general styles.
 
+  // Include your component styles.
   @include awesome-header-theme($theme);
   @include awesome-footer-theme($theme);
 {{'}'}}
@@ -153,6 +173,10 @@ $theme: mat-dark-theme($primary, $accent);
     </mat-expansion-panel>
   </mat-accordion>
 </div>
+
+<h3>Examples</h3>
+
+<p>View the source code for this site for additional examples of how to theme your app using Angular Material. <a href="https://github.com/sgbj/swatch">View source</a>
 
 <h2 id="elevation">Elevation</h2>
 
