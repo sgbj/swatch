@@ -1,10 +1,10 @@
 @mixin app-core() {
 
-  html {
+  @at-root html {
     height: 100%;
   }
 
-  body {
+  @at-root body {
     margin: 0;
     height: 100%;
   }
