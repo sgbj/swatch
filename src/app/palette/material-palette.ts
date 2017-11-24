@@ -919,6 +919,18 @@ export const materialThemes = [
             matPalette('mat-blue-grey'),
             matPalette('mat-amber')
         )
+    },
+    {
+        name: 'Deep Orange - Teal',
+        code: 'deeporange-teal',
+        className: 'deeporange-teal-theme',
+        primary: '#e64a19',
+        accent: '#64ffda',
+        colors: matLightTheme(
+            matPalette('mat-deep-orange', '700', '500', '900'),
+            matPalette('mat-teal', 'A200', 'A100', 'A400'),
+            matPalette('mat-brown', 'A200', 'A100', 'A400')
+        )
     }
 ];
 

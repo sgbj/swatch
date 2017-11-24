@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-@import 'general';
+@import 'app-core';
 
 @import '../app/app.component.theme';
 @import '../app/getting-started/getting-started.component.theme';
@@ -38,6 +38,8 @@
   );
 
   @include angular-material-typography($typography-config);
+
+  @include app-core();
 
   @include app-component-theme($theme);
   @include getting-started-component-theme($theme);
