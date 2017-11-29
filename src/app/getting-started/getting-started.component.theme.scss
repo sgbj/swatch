@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-@mixin getting-started-component-theme($theme) {
+@mixin getting-started-theme($theme) {
   $primary: map-get($theme, primary);
 
   .mark {
@@ -8,3 +8,5 @@
     color: mat-color($primary, lighter-contrast);
   }
 }
+
+@mixin getting-started-typography($typography) { }

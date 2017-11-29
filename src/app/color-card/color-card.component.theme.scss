@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-@mixin color-card-component-theme($theme) {
+@mixin color-card-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
@@ -21,3 +21,5 @@
     }
   }
 }
+
+@mixin color-card-typography($typography) { }

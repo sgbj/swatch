@@ -63,7 +63,7 @@
   $foreground: map-get($theme, foreground);
 
   // Configure the typography for your theme (optional).
-  $typography-config: mat-typography-config(
+  $typography: mat-typography-config(
     $font-family:   'Roboto, "Helvetica Neue", sans-serif',
     $display-4:     mat-typography-level(112px, 112px, 300),
     $display-3:     mat-typography-level(56px, 56px, 400),
@@ -81,7 +81,7 @@
     $input:         mat-typography-level(16px, 1.125, 400)
   );
 
-  @include angular-material-typography($typography-config);
+  @include angular-material-typography($typography);
 
   // Add other styles.
 
@@ -245,19 +245,19 @@ $theme: mat-dark-theme($primary, $accent);
 @import '~@angular/material/theming';
 
 // Create a config with the default typography levels.
-$config: mat-typography-config();
+$typography: mat-typography-config();
 
 // Custom class that uses specific styles from the `{{type}}` level.
 .my-class {{'{'}}
-  font-family: mat-font-family($config);
-  font-size: mat-font-size($config, {{type}});
-  font-weight: mat-font-weight($config, {{type}});
-  line-height: mat-line-height($config, {{type}});
+  font-family: mat-font-family($typography);
+  font-size: mat-font-size($typography, {{type}});
+  font-weight: mat-font-weight($typography, {{type}});
+  line-height: mat-line-height($typography, {{type}});
 {{'}'}}
 
 // Custom class that uses all of the typography styles from the `{{type}}` level.
 .my-class-2 {{'{'}}
-  @include mat-typography-level-to-styles($config, {{type}});
+  @include mat-typography-level-to-styles($typography, {{type}});
 {{'}'}}
   </app-prism>
 </div>

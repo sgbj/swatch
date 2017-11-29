@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-@mixin prism-component-theme($theme) {
+@mixin prism-theme($theme) {
   $is-dark: map-get($theme, is-dark);
   $background: map-get($theme, background);
 
@@ -9,3 +9,5 @@
     background: if($is-dark, lighten($bg, 2%), darken($bg, 2%));
   }
 }
+
+@mixin prism-typography($typography) { }

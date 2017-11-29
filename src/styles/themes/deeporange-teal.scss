@@ -1,4 +1,4 @@
-@import '../app-theme';
+@import '../swatch-theme';
 @import '~prismjs/themes/prism-okaidia';
 
 // Define a theme.
@@ -10,4 +10,4 @@ $theme: mat-dark-theme($primary, $accent, $warn);
 
 // Include all theme styles for the components.
 @include angular-material-theme($theme);
-@include app-theme($theme);
+@include swatch-theme($theme);

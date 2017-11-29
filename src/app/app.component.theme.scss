@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-@mixin app-component-theme($theme) {
+@mixin app-theme($theme) {
   $is-dark: map-get($theme, is-dark);
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -20,3 +20,5 @@
     background-color: if($is-dark, mat-color($primary, lighter, 0.6), mat-color($primary, darker, 0.6));
   }
 }
+
+@mixin app-typography($typography) { }

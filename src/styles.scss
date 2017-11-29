@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'styles/app-theme';
+@import 'styles/swatch-theme';
 
 // Include non-theme styles for core.
 @include mat-core();
+
+@include swatch-core();
 
 // @import 'styles/themes/indigo-pink';
 

@@ -1,13 +1,13 @@
 @import '~@angular/material/theming';
 
-@import 'app-core';
+@import 'swatch-core';
 
 @import '../app/app.component.theme';
 @import '../app/getting-started/getting-started.component.theme';
 @import '../app/prism/prism.component.theme';
 @import '../app/color-card/color-card.component.theme';
 
-@mixin app-theme($theme) {
+@mixin swatch-theme($theme) {
   $is-dark: map-get($theme, is-dark);
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
@@ -19,7 +19,16 @@
     color: if($is-dark, mat-color($accent), mat-color($primary));
   }
 
-  $typography-config: mat-typography-config(
+  @include swatch-typography();
+
+  @include app-theme($theme);
+  @include getting-started-theme($theme);
+  @include prism-theme($theme);
+  @include color-card-theme($theme);
+}
+
+@mixin swatch-typography() {
+  $typography: mat-typography-config(
     $font-family:   'Roboto, "Helvetica Neue", sans-serif',
     $display-4:     mat-typography-level(112px, 112px, 300),
     $display-3:     mat-typography-level(56px, 56px, 400),
@@ -37,12 +46,10 @@
     $input:         mat-typography-level(18px, 1.125, 400)
   );
 
-  @include angular-material-typography($typography-config);
+  @include angular-material-typography($typography);
 
-  @include app-core();
-
-  @include app-component-theme($theme);
-  @include getting-started-component-theme($theme);
-  @include prism-component-theme($theme);
-  @include color-card-component-theme($theme);
+  @include app-typography($theme);
+  @include getting-started-typography($theme);
+  @include prism-typography($theme);
+  @include color-card-typography($theme);
 }

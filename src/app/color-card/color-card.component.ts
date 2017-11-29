@@ -24,7 +24,7 @@ export class ColorCardComponent implements OnInit {
         color: this.color.palette[key],
         contrast: this.color.contrast[key],
         colorCode: `mat-color($${this.color.code}, ${key})`,
-        contrastCode: `mat-color($${this.color.code}, ${key}-contrast)`,
+        contrastCode: `mat-color($${this.color.code}, ${+key ? `'${key}-contrast'` : `${key}-contrast`})`,
         hideContrastCode: this.color.hideContrastCode
       }
     });
