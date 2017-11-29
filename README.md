@@ -1,3 +1,5 @@
+![Swatch screenshot](https://user-images.githubusercontent.com/5178445/33357492-05f04dbc-d488-11e7-95b2-241adc4e88ae.PNG)
+
 # Swatch
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.2.
