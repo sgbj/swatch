@@ -24,10 +24,20 @@ export class ColorCardComponent implements OnInit {
         color: this.color.palette[key],
         contrast: this.color.contrast[key],
         colorCode: `mat-color($${this.color.code}, ${key})`,
-        contrastCode: `mat-color($${this.color.code}, ${+key ? `'${key}-contrast'` : `${key}-contrast`})`,
+        contrastCode: this.getContrastCode(),
         hideContrastCode: this.color.hideContrastCode
       }
     });
+  }
+  
+  getContrastCode() {
+    if (this.color.code.indexOf('primary') >= 0 ||
+        this.color.code.indexOf('accent') >= 0 ||
+        this.color.code.indexOf('warn') >= 0) {
+      return `mat-color($${this.color.code}, ${+key ? `'${key}-contrast'` : `${key}-contrast`})`;
+    } else {
+      return `mat-color(map-get($${this.color.code}, contrast), ${key})`;
+    }
   }
 
   get keys() {
