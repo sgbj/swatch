@@ -24,13 +24,13 @@ export class ColorCardComponent implements OnInit {
         color: this.color.palette[key],
         contrast: this.color.contrast[key],
         colorCode: `mat-color($${this.color.code}, ${key})`,
-        contrastCode: this.getContrastCode(),
+        contrastCode: this.getContrastCode(key),
         hideContrastCode: this.color.hideContrastCode
       }
     });
   }
   
-  getContrastCode() {
+  getContrastCode(key) {
     if (this.color.code.indexOf('primary') >= 0 ||
         this.color.code.indexOf('accent') >= 0 ||
         this.color.code.indexOf('warn') >= 0) {
