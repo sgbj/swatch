@@ -43,16 +43,16 @@
   }
 
   .mat-typography {
-  h2 {
-    margin-top: 40px;
+    h2 {
+      margin-top: 40px;
 
-    &:first-of-type {
-      margin-top: 16px;
+      &:first-of-type {
+        margin-top: 16px;
+      }
+    }
+
+    h3 {
+      margin: 24px 0 16px 0;
     }
   }
-
-  h3 {
-    margin: 24px 0 16px 0;
-  }
-}
 }
